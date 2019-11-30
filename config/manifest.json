@@ -1,15 +1,19 @@
 {
-  "app.js": "/public/js/chunk/app.4ccc47e1.js",
-  "common.js": "/public/js/chunk/common.211be01c.js",
+  "app.js": "/public/js/chunk/app.00753fb9.js",
+  "common.css": "/public/css/common.96776169.css",
+  "common.js": "/public/js/chunk/common.5f96fe53.js",
   "runtime.js": "/public/js/runtime.bcab3ddd.js",
+  "img/logo.svg": "/public/img/logo.5d5d9eef.svg",
   "deps": {
     "app.js": {
       "js": [
         "/public/js/runtime.bcab3ddd.js",
-        "/public/js/chunk/common.211be01c.js",
-        "/public/js/chunk/app.4ccc47e1.js"
+        "/public/js/chunk/common.5f96fe53.js",
+        "/public/js/chunk/app.00753fb9.js"
       ],
-      "css": []
+      "css": [
+        "/public/css/common.96776169.css"
+      ]
     }
   },
   "info": {
