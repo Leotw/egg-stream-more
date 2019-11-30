@@ -6,6 +6,20 @@
   "egg": {
     "declarations": true
   },
+  "scripts": {
+    "clean": "easy clean",
+    "build": "easy build",
+    "start": "egg-scripts start --daemon --title=egg-server-egg-stream-more",
+    "stop": "egg-scripts stop --title=egg-server-egg-stream-more",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
   "dependencies": {
     "egg": "^2.15.1",
     "egg-logger": "^2.4.1",
@@ -40,22 +54,13 @@
     "less-loader": "^5.0.0",
     "service-worker-register": "^1.2.6"
   },
+  "webpack": {
+    "loaders": {
+      "less": true
+    }
+  },
   "engines": {
     "node": ">=10.0.0"
-  },
-  "scripts": {
-    "clean": "easy clean",
-    "build": "easy build",
-    "start": "egg-scripts start --daemon --title=egg-server-egg-stream-more",
-    "stop": "egg-scripts stop --title=egg-server-egg-stream-more",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
   },
   "ci": {
     "version": "10"
