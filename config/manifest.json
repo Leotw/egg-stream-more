@@ -1,0 +1,20 @@
+{
+  "app.js": "/public/js/chunk/app.4ccc47e1.js",
+  "common.js": "/public/js/chunk/common.211be01c.js",
+  "runtime.js": "/public/js/runtime.bcab3ddd.js",
+  "deps": {
+    "app.js": {
+      "js": [
+        "/public/js/runtime.bcab3ddd.js",
+        "/public/js/chunk/common.211be01c.js",
+        "/public/js/chunk/app.4ccc47e1.js"
+      ],
+      "css": []
+    }
+  },
+  "info": {
+    "publicPath": "/public/",
+    "buildPath": "public",
+    "mapped": true
+  }
+}
