@@ -33,6 +33,7 @@ $ npm stop
 [egg]: https://eggjs.org
 
 ### note
-`config.reactssr` 默认layout路径为`[app-root]/app/view/layout.js`
-`window.__INITIAL_STATE__` 获取server端变量，可在前端进行访问
+- `config.reactssr` 默认layout路径为`[app-root]/app/view/layout.js`
+
+- `window.__INITIAL_STATE__` 获取server端变量，可在前端进行访问
 `
