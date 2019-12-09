@@ -7,7 +7,8 @@ class HomeController extends Controller {
     const { ctx } = this;
     await ctx.render('app.js', {
       message: 'SSR Home',
-    });
+      url: ctx.url
+    }, { markup: false });
   }
 
   async client() {
