@@ -1,15 +1,17 @@
 import React from 'react';
-import logo from '../../asset/image/logo.svg';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+import * as actions from './action';
 import './style.less';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super();
     this.state = {};
   }
 
   componentDidMount() {
-    console.log(window.__INITIAL_STATE__);
     this.setState({ message: window.__INITIAL_STATE__.message })
   }
 
@@ -17,9 +19,24 @@ export default class Home extends React.Component {
     const { message } = this.state;
     return (
       <div className="HomeContainer">
-        <section><img className="logo" src={logo} alt="logo"/></section>
         <article>{message}</article>
+        <div className="nav">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return state
+};
+
+const mapActionToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(actions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Home);
