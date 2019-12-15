@@ -1,23 +1,23 @@
 {
-  "app.js": "/public/js/chunk/app.js",
-  "common.css": "/public/css/common.css",
-  "common.js": "/public/js/chunk/common.js",
-  "runtime.js": "/public/js/runtime.js",
-  "img/logo.svg": "/public/img/logo.svg",
+  "app.js": "/static/public/js/chunk/app.c5349d8f.js",
+  "common.css": "/static/public/css/common.7789f664.css",
+  "common.js": "/static/public/js/chunk/common.1736e1e5.js",
+  "runtime.js": "/static/public/js/runtime.824363d5.js",
+  "img/logo.svg": "/static/public/img/logo.5d5d9eef.svg",
   "deps": {
     "app.js": {
       "js": [
-        "/public/js/runtime.js",
-        "/public/js/chunk/common.js",
-        "/public/js/chunk/app.js"
+        "/static/public/js/runtime.824363d5.js",
+        "/static/public/js/chunk/common.1736e1e5.js",
+        "/static/public/js/chunk/app.c5349d8f.js"
       ],
       "css": [
-        "/public/css/common.css"
+        "/static/public/css/common.7789f664.css"
       ]
     }
   },
   "info": {
-    "publicPath": "/public/",
+    "publicPath": "/static/public/",
     "buildPath": "public",
     "mapped": true
   }
