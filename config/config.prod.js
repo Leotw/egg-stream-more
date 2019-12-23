@@ -6,5 +6,8 @@ module.exports = appInfo => {
     consoleLevel: 'DEBUG',
     dir: path.join('/app/log/', 'egg-stream-more')
   };
+  config.logger = {
+    outputJSON: true,
+  };
   return config;
 };
