@@ -1,9 +1,14 @@
 'use strict';
-module.exports = {
-  entry: {
-    app: './client/app.js'
+const merge = require('webpack-merge');
+const webpackDevConfig = require('./client/config/webpack.dev');
+const webpackProdConfig = require('./client/config/webpack.prod');
+
+module.exports = merge(
+  {
+    entry: {
+      app: './client/app.js'
+    },
+    devtool: 'source-map'
   },
-  output: {
-    publicPath: process.env.EGG_SERVER_ENV === 'stage' ? '/public/' : '/static/public'
-  }
-};
+  process.env.NODE_ENV === 'development' ? webpackDevConfig : webpackProdConfig
+);
