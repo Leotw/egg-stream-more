@@ -6,15 +6,24 @@ import { Provider } from 'react-redux';
 import createStore from './store';
 import Root from './container/Root';
 import Layout from './component/Layout';
+import * as Sentry from '@sentry/browser';
 
 class App extends React.Component {
   render() {
-    return <Root {...this.props}/>
+    return <React.Fragment>
+      <Root {...this.props}/>
+      <div onClick={() => {a()}}>track a problem</div>
+    </React.Fragment>
   }
 }
 
 /* 服务端输出 */
 class ServerEntry extends Component {
+  constructor(props) {
+    super(props);
+    Sentry.init({ dsn: props.clientCfg });
+  }
+
   render() {
     const url = this.props.url;
     const store = createStore(Object.assign(this.props));
@@ -59,13 +68,18 @@ const clientEntry = () => {
   const root = document.getElementById('app');
   const store = createStore(Object.assign(window.__INITIAL_STATE__));
   const renderMethod = root.childNodes.length > 0 ? 'render' : 'hydrate';
+  const { __INITIAL_STATE__: state } = window;
+  if(state.env === 'prod') {
+    Sentry.init({
+      dsn: state.clientCfg,
+      release: `egg-stream-more@${state.version}`
+    });
+  }
   const render = () => {
     ReactDOM[renderMethod](
       <Provider store={store}>
         <BrowserRouter>
-          {
-            EASY_ENV_IS_DEV ? <AppContainer><App/></AppContainer> : <App/>
-          }
+          { EASY_ENV_IS_DEV ? <AppContainer><App/></AppContainer> : <App/> }
         </BrowserRouter>
       </Provider>, root
     );
