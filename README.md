@@ -40,3 +40,5 @@ $ [root@remote] bash .sh/build.sh
 - `window.__INITIAL_STATE__` 获取server端变量，可在前端进行访问
 
 - `/usr/share/nginx/html`为静态资源总路径
+
+- `/usr/local/bin/docker-compose`docker-compose路径
