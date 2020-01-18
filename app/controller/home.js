@@ -4,17 +4,24 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async server() {
-    const { ctx } = this;
+    const { ctx, app, config } = this;
+    const { url, client, server } = config.dsn;
+    const { key: clientKey, project: clientProject } = client;
+    const { key: serverKey, project: serverProject } = server;
     await ctx.render('app.js', {
       message: 'SSR Home',
-      context: ctx
-    });
+      url: ctx.url,
+      env: app.env,
+      version: config.version,
+      clientCfg: `http://${clientKey}@${url}/${clientProject}`,
+      serverCfg: `http://${serverKey}@${url}/${serverProject}`
+    }, { markup: false });
   }
 
   async client() {
     const { ctx } = this;
     await ctx.renderClient('app.js', {
-      content: '8888'
+      content: 'Client render'
     });
   }
 }

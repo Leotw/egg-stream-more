@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Layout extends React.Component {
   render() {
-    const { children, ctx } = this.props;
+    const { children } = this.props;
     return EASY_ENV_IS_NODE ? (
       <html lang="en">
       <head>

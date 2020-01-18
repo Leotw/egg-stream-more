@@ -4,6 +4,7 @@
 const easywebpack = require('@easy-team/easywebpack-react');
 
 const path = require('path');
+const packages = require('../package');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -46,9 +47,22 @@ module.exports = appInfo => {
     },
   };
 
+  config.version = packages.version;
+
   // add your user config here
   const userConfig = {
-    // myAppName: 'egg',
+    // prod env
+    dsn: {
+      url: '39.100.135.194:8000',
+      client: {
+        key: '10c87434b11747e1bf25df161c05bf9d',
+        project: '4'
+      },
+      server: {
+        key: '9b3a4e5f2a1443158fd84f4a3aa9f465',
+        project: '2'
+      }
+    }
   };
 
   return {

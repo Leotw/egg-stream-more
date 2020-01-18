@@ -6,7 +6,28 @@
   "egg": {
     "declarations": true
   },
+  "scripts": {
+    "clean": "easy clean",
+    "build": "cross-env EGG_SERVER_ENV=local NODE_ENV=production easy build --devtool",
+    "build:prod": "cross-env EGG_SERVER_ENV=prod NODE_ENV=production easy build --devtool",
+    "build:stage": "cross-env EGG_SERVER_ENV=stage NODE_ENV=production easy build --devtool",
+    "start": "egg-scripts start --daemon --title=egg-server-egg-stream-more",
+    "start:prod": "EGG_SERVER_ENV=prod egg-scripts start --daemon --title=egg-server-egg-stream-more",
+    "start:stage": "EGG_SERVER_ENV=stage egg-scripts start --daemon --title=egg-server-egg-stream-more",
+    "stop": "egg-scripts stop --title=egg-server-egg-stream-more",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod",
+    "deploy": "bash .sh/deploy.sh"
+  },
   "dependencies": {
+    "@sentry/browser": "^5.10.2",
+    "@sentry/node": "^5.10.2",
     "egg": "^2.15.1",
     "egg-logger": "^2.4.1",
     "egg-scripts": "^2.11.1",
@@ -28,6 +49,7 @@
     "@easy-team/easywebpack-react": "^4.1.1",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
+    "cross-env": "^6.0.3",
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
@@ -38,24 +60,16 @@
     "imagemin-webpack-plugin": "^2.4.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
-    "service-worker-register": "^1.2.6"
+    "service-worker-register": "^1.2.6",
+    "webpack-merge": "^4.2.2"
+  },
+  "webpack": {
+    "loaders": {
+      "less": true
+    }
   },
   "engines": {
     "node": ">=10.0.0"
-  },
-  "scripts": {
-    "clean": "easy clean",
-    "build": "easy build",
-    "start": "egg-scripts start --daemon --title=egg-server-egg-stream-more",
-    "stop": "egg-scripts stop --title=egg-server-egg-stream-more",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
   },
   "ci": {
     "version": "10"

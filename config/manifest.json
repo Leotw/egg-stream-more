@@ -1,15 +1,23 @@
 {
-  "app.js": "/public/js/chunk/app.4ccc47e1.js",
-  "common.js": "/public/js/chunk/common.211be01c.js",
-  "runtime.js": "/public/js/runtime.bcab3ddd.js",
+  "app.js": "/public/js/chunk/app.js",
+  "app.js.map": "/public/js/chunk/app.js.map",
+  "common.css": "/public/css/common.css",
+  "common.js": "/public/js/chunk/common.js",
+  "common.css.map": "/public/css/common.css.map",
+  "common.js.map": "/public/js/chunk/common.js.map",
+  "runtime.js": "/public/js/runtime.js",
+  "runtime.js.map": "/public/js/runtime.js.map",
+  "img/logo.svg": "/public/img/logo.svg",
   "deps": {
     "app.js": {
       "js": [
-        "/public/js/runtime.bcab3ddd.js",
-        "/public/js/chunk/common.211be01c.js",
-        "/public/js/chunk/app.4ccc47e1.js"
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/app.js"
       ],
-      "css": []
+      "css": [
+        "/public/css/common.css"
+      ]
     }
   },
   "info": {
