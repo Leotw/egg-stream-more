@@ -12,7 +12,6 @@ class App extends React.Component {
   render() {
     return <React.Fragment>
       <Root {...this.props}/>
-      <div onClick={() => {a()}}>track a problem</div>
     </React.Fragment>
   }
 }
@@ -39,35 +38,11 @@ class ServerEntry extends Component {
   }
 }
 
-// const ServerEntry = (context) => {
-//   const url = context.state.url;
-//   class ServerContainer extends Component {
-//     render() {
-//       return (
-//         <Layout {...this.props}>
-//           <App />
-//         </Layout>
-//       );
-//     }
-//   }
-//
-//   return Promise.resolve()
-//     .then(() => {
-//       return () => {
-//         return (
-//           <StaticRouter location={url}>
-//             <ServerContainer />
-//           </StaticRouter>
-//         )
-//       }
-//     });
-// };
-
 /* 客户端输出 */
 const clientEntry = () => {
   const root = document.getElementById('app');
   const store = createStore(Object.assign(window.__INITIAL_STATE__));
-  const renderMethod = root.childNodes.length > 0 ? 'render' : 'hydrate';
+  const renderMethod = root.childNodes.length > 0 ? 'hydrate' : 'render';
   const { __INITIAL_STATE__: state } = window;
   if(state.env === 'prod') {
     Sentry.init({
