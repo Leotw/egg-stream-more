@@ -1,24 +1,23 @@
 {
-  "chunk/0.js": "/public/js/chunk/0.b963bf6c.js",
-  "chunk/0.js.map": "/public/js/chunk/0.b963bf6c.js.map",
-  "chunk/1.js": "/public/js/chunk/1.ed4c849e.js",
-  "chunk/1.js.map": "/public/js/chunk/1.ed4c849e.js.map",
-  "app.js": "/public/js/chunk/app.9687c054.js",
-  "app.js.map": "/public/js/chunk/app.9687c054.js.map",
-  "common.css": "/public/css/common.468783d0.css",
-  "common.js": "/public/js/chunk/common.0585a16a.js",
-  "common.js.map": "/public/js/chunk/common.0585a16a.js.map",
-  "runtime.js": "/public/js/runtime.6128777b.js",
-  "runtime.js.map": "/public/js/runtime.6128777b.js.map",
+  "chunk/1.js": "/public/js/chunk/1.js",
+  "chunk/1.js.map": "/public/js/chunk/1.js.map",
+  "app.js": "/public/js/chunk/app.js",
+  "app.js.map": "/public/js/chunk/app.js.map",
+  "common.css": "/public/css/common.css",
+  "common.js": "/public/js/chunk/common.js",
+  "common.css.map": "/public/css/common.css.map",
+  "common.js.map": "/public/js/chunk/common.js.map",
+  "runtime.js": "/public/js/runtime.js",
+  "runtime.js.map": "/public/js/runtime.js.map",
   "deps": {
     "app.js": {
       "js": [
-        "/public/js/runtime.6128777b.js",
-        "/public/js/chunk/common.0585a16a.js",
-        "/public/js/chunk/app.9687c054.js"
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/app.js"
       ],
       "css": [
-        "/public/css/common.468783d0.css"
+        "/public/css/common.css"
       ]
     }
   },
