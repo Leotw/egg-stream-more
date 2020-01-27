@@ -1,9 +1,11 @@
 import React from 'react';
-import logo from './image/logo.svg';
 import './style.less';
 
-export default function Pane() {
+export default function Pane(props) {
+  const { title } = props;
   return (
-    <section className="Pane"><img className="logo" src={logo} alt="logo"/></section>
+    <section className="Pane">
+      <div className="pane-title small-text">{title}</div>
+    </section>
   )
 }

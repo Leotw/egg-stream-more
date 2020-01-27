@@ -1,0 +1,2 @@
+exports.ids=[2],exports.modules={18:function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return s}));var r=n(0),a=n.n(r);class s extends a.a.Component{render(){return a.a.createElement("div",{className:"AboutContainer"},a.a.createElement("p",null,"About"))}}}};
+//# sourceMappingURL=2.js.map

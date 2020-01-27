@@ -23,6 +23,14 @@ module.exports = {
             "libraryName": "antd",
             "style": "css"
           }
+        ],
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "asyncGenerators": false,
+            "generators": false,
+            "async": false
+          }
         ]
       ]
     },
@@ -53,6 +61,14 @@ module.exports = {
           {
             "libraryName": "antd",
             "style": "css"
+          }
+        ],
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "asyncGenerators": false,
+            "generators": false,
+            "async": false
           }
         ]
       ]

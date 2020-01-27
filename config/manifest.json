@@ -1,4 +1,6 @@
 {
+  "chunk/1.js": "/public/js/chunk/1.js",
+  "chunk/1.js.map": "/public/js/chunk/1.js.map",
   "app.js": "/public/js/chunk/app.js",
   "app.js.map": "/public/js/chunk/app.js.map",
   "common.css": "/public/css/common.css",
@@ -7,7 +9,6 @@
   "common.js.map": "/public/js/chunk/common.js.map",
   "runtime.js": "/public/js/runtime.js",
   "runtime.js.map": "/public/js/runtime.js.map",
-  "img/logo.svg": "/public/img/logo.svg",
   "deps": {
     "app.js": {
       "js": [
