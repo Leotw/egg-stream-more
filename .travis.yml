@@ -2,11 +2,13 @@ sudo: false
 language: node_js
 node_js:
   - '10'
+  - '11'
 before_install:
-  - npm i npminstall -g
+  - npm install -g
 install:
-  - npminstall
+  - npm install
+  - npm install codecov
 script:
   - npm run ci
 after_script:
-  - npminstall codecov && codecov
+  - codecov
