@@ -50,3 +50,12 @@ $ [root@remote] bash .sh/build.sh
 - `/usr/local/bin/docker-compose`docker-compose路径
 
 - `/app/log`生产日志路径
+
+### config
+
+| Environment | Production | Stage | Locality | Node | Web |
+|-------------|------------|-------|----------|------|-----|
+| NODE_ENV | production |  | development |||
+| EGG_SERVER_ENV | prod | stage | local |||
+| EASY_ENV_IS_DEV | false | false | true |||
+| EASY_ENV_IS_NODE | | | | true | false |
