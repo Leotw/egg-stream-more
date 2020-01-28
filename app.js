@@ -1,10 +1,11 @@
 const Sentry = require('@sentry/node');
 module.exports = appInfo => {
-  switch (appInfo.env) {
+  const { config } = appInfo;
+  switch (config.env) {
     case 'prod':
       Sentry.init({
-        dsn: appInfo.config.dsn.serverCfg,
-        release: `egg-stream-more@${appInfo.config.version}`
+        dsn: config.dsn.serverCfg,
+        release: `egg-stream-more@${config.version}`
       });
       break;
     case 'local':
