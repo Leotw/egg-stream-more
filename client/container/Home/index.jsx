@@ -30,7 +30,7 @@ class Home extends React.Component {
               })
             }
           </div>
-          <div className="hos-address smaller-top-padding">{address}</div>
+          <div className="hos-address smaller-top-padding small-text">{address}</div>
           <div className="hos-link flex flex-wrap smaller-top-padding">
             <div className="hos-phone-link link-btn mini-text" data-tel={phone}>{'电话'}</div>
             <div className="hos-detail-link link-btn mini-text">{'详情'}</div>

@@ -10,7 +10,7 @@ export default class Layout extends React.Component {
         <meta name="keywords"/>
         <meta name="description"/>
         <meta httpEquiv="content-type" content="text/html;charset=utf-8"/>
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"/>
       </head>
       <body>
       <div id="app">{children}</div>
