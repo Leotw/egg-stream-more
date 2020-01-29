@@ -1,6 +1,6 @@
 {
-  "chunk/1.js": "/public/js/chunk/1.js",
-  "chunk/1.js.map": "/public/js/chunk/1.js.map",
+  "chunk/0.js": "/public/js/chunk/0.js",
+  "chunk/0.js.map": "/public/js/chunk/0.js.map",
   "app.js": "/public/js/chunk/app.js",
   "app.js.map": "/public/js/chunk/app.js.map",
   "common.css": "/public/css/common.css",
