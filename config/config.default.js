@@ -4,6 +4,7 @@
 const easywebpack = require('@easy-team/easywebpack-react');
 
 const path = require('path');
+const fs = require('fs');
 const packages = require('../package');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -32,7 +33,11 @@ module.exports = appInfo => {
   };
 
   config.reactssr = {
-    layout: path.join(appInfo.baseDir, 'client/view/layout.tpl')
+    layout: path.join(appInfo.baseDir, 'client/view/layout.tpl'),
+    afterRender: (html) => {
+      const flex = fs.readFileSync(path.join(appInfo.baseDir, 'client/asset/js/flex.js'));
+      return html.replace(/<link rel="stylesheet"/, `<script>${flex.toString()}</script><link rel="stylesheet"`);
+    },
   };
 
   config.logger = {
@@ -62,6 +67,9 @@ module.exports = appInfo => {
         key: '9b3a4e5f2a1443158fd84f4a3aa9f465',
         project: '2'
       }
+    },
+    asset: {
+      flex: (fs.readFileSync(path.join(appInfo.baseDir, 'client/asset/js/flex.js'))).toString()
     }
   };
 
