@@ -1,4 +1,7 @@
 const Sentry = require('@sentry/node');
+const cluster = require('cluster-client');
+const RegistryClient = require('./registry_client');
+
 module.exports = appInfo => {
   /* 监控配置 */
   const { config } = appInfo;
@@ -22,5 +25,24 @@ module.exports = appInfo => {
     context.runInBackground(async () => {
       await context.service.source.update();
     });
-  })
+  });
+
+  appInfo.registryClient = cluster(RegistryClient).create({});
+  appInfo.beforeStart(async () => {
+    await appInfo.registryClient.ready();
+    appInfo.logger.info('registry client is ready');
+    appInfo.registryClient.subscribe({
+      topic: 'message'
+    }, (val) => {
+      console.log(val + ' in message.');
+    });
+    appInfo.registryClient.publish({
+      topic: 'message',
+      data: 'success'
+    });
+    const res = await appInfo.registryClient.getData({
+      topic: 'message'
+    });
+    console.log(res);
+  });
 };
