@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import Feature from '../../component/Feature';
 import * as actions from './action';
 import './style.less';
@@ -19,6 +20,7 @@ class Home extends React.Component {
     const { hospitalName, hospitalIcons, address, phone, serves } = this.props.store;
     return (
       <section className="HomeContainer">
+        {/*<Link to='/about'>About</Link>*/}
         <section className="home-info-section normal-left-padding normal-right-padding">
           <div className="hos-name medium-text normal-top-padding">{hospitalName}</div>
           <div className="hos-property">

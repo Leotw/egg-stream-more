@@ -14,7 +14,12 @@ module.exports = appInfo => {
 
   config.keys = appInfo.name + '_123456789';
 
-  config.middleware = [];
+  /* 中间件 */
+  config.middleware = ['page'];
+  config.page = {
+    enable: true,
+    path: /(^\/client)|(^\/$|^\/\?)/
+  };
 
   config.static = {
     maxAge: 0, // maxAge 缓存，默认 1 年
