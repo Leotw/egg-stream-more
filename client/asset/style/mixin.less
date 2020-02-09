@@ -1,0 +1,10 @@
+/* font */
+.font (@font-size) {
+  font-size: @font-size - 2;
+  [data-dpr="2"] & {
+    font-size: @font-size;
+  }
+  [data-dpr="3"] & {
+    font-size: @font-size + 2;
+  }
+}

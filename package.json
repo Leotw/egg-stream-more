@@ -60,6 +60,7 @@
     "imagemin-webpack-plugin": "^2.4.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "postcss-pxtorem": "^4.0.1",
     "service-worker-register": "^1.2.6",
     "webpack-merge": "^4.2.2"
   },
