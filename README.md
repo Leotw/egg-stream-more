@@ -8,6 +8,15 @@
 
 see [egg docs][egg] for more detail.
 
+### Config
+
+| Environment | Production | Stage | Locality | Node | Web |
+|-------------|------------|-------|----------|------|-----|
+| NODE_ENV | production |  | development |||
+| EGG_SERVER_ENV | prod | stage | local |||
+| EASY_ENV_IS_DEV | false | false | true |||
+| EASY_ENV_IS_NODE | | | | true | false |
+
 ### Development
 
 ```bash
@@ -18,7 +27,52 @@ $ open http://localhost:7001/
 
 ### Deploy
 
-Revoke
+
+Core command
+
+| command | EGG_SERVER_ENV | NODE_ENV |
+|-------------|------------|-------|
+| `npm run dev` | local | development |
+| `npm run build` | local | production |
+| `npm run build:stage` | stage | production |
+| `npm run build:prod` | prod | production |
+| `npm run start` | prod | production |
+| `npm run start:stage` | stage | production |
+| `npm run start:prod` | prod | production |
+
+step 1. build static resource(NODE_ENV=production)
+
+```bash
+npm run build # local build
+npm run build:prod # production build
+npm run build:stage # stage build
+```
+
+step 2. start services
+
+```bash
+npm run start:prod # or npm start
+npm run start:stage # start stage environment
+```
+
+Custom deploy(don't use for production all)
+
+1. config your deploy option
+
+```bash
+$ [root@localhost] open .sh/prop.sh
+```
+```bash
+username=root # your remote user
+ip=0.0.0.0 # your service ip
+localpath=$(pwd)
+remotepath=/app/ # remote app location
+appname=my-app # remote app name
+staticpath=/staic/ # remote static remote, can be cdn path
+```
+
+2. authentication login
+
 ```bash
 $ [root@localhost] ssh-keygen -t rsa # 生成密钥
 $ [root@localhost] ssh-copy-id [-i indetify_file ][user@host_ip] # 复制密钥到远端主机
@@ -26,24 +80,73 @@ $ [root@localhost] scp ~/.ssh/id_rsa.pub root@remote:~/.ssh/authorized_keys # �
 $ [root@remote] chmod 700 ~/.ssh & chmod 600 ~/.ssh/authorized_keys # 权限
 $ [root@localhost] ssh-add -K ~/.ssh/id_rsa # Mac用户可能需要这一步
 $ [root@remote] netstat -lnt # 查看可用端口
-
 ```
 
-Build
+3. build
+
 ```bash
-$ [root@localhost] npm run deploy
+$ [root@localhost] npm run deploy # trigger .sh
 $ [root@remote] bash .sh/build.sh
 ```
 
-### Config
+### Preview
+```
+my-app
+├── app # Node
+│   ├── controller
+│   ├── middleware
+│   ├── router.js
+│   ├── service
+│   └── view # Development webpack chunk
+│       ├── 0.js
+│       ├── 0.js.map
+│       ├── app.js
+│       ├── app.js.map
+│       └── img
+│           └── logo.5d5d9eef.svg
+├── app.js # Node start root 
+├── appveyor.yml
+├── babel.config.js
+├── client # Web
+│   ├── app.js
+│   ├── asset # Common js and css
+│   │   ├── js
+│   │   └── style
+│   ├── component
+│   │   └── Layout.jsx # Node render output component(required)
+│   ├── config
+│   │   ├── webpack.dev.js
+│   │   └── webpack.prod.js
+│   ├── container
+│   │   └── Root.jsx # Isomorphic core
+│   ├── store # Redux
+│   │   ├── index.js
+│   │   └── reducer.js
+│   └── view
+│       └── layout.tpl # Client render html template
+├── config # Egg config
+│   ├── config.default.js
+│   ├── config.prod.js
+│   ├── config.stage.js
+│   ├── manifest.json
+│   └── plugin.js
+├── coverage # Test coverage report
+├── jsconfig.json
+├── package.json
+├── public # Client webpack build chunck
+│   ├── css
+│   │   └── common.468783d0.css
+│   └── js
+│       ├── chunk
+│       ├── runtime.6128777b.js
+│       └── runtime.6128777b.js.map
+├── test # Test
+├── typings # d.ts export
+└── webpack.config.js
+```
 
-| Environment | Production | Stage | Locality | Node | Web |
-|-------------|------------|-------|----------|------|-----|
-| NODE_ENV | production |  | development |||
-| EGG_SERVER_ENV | prod | stage | local |||
-| EASY_ENV_IS_DEV | false | false | true |||
-| EASY_ENV_IS_NODE | | | | true | false |
 
+### Communication
 
 cluster
 
