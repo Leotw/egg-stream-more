@@ -28,7 +28,7 @@ $ open http://localhost:7001/
 ### Deploy
 
 
-Core command
+**Core command**
 
 | command | EGG_SERVER_ENV | NODE_ENV |
 |-------------|------------|-------|
@@ -55,7 +55,8 @@ npm run start:prod # or npm start
 npm run start:stage # start stage environment
 ```
 
-Custom deploy(don't use for production all)
+**Custom deploy**
+> don't use for production all
 
 1. config your deploy option
 
@@ -90,6 +91,7 @@ $ [root@remote] bash .sh/build.sh
 ```
 
 ### Preview
+
 ```
 my-app
 ├── app # Node
@@ -145,10 +147,9 @@ my-app
 └── webpack.config.js
 ```
 
-
 ### Communication
 
-cluster
+**Cluster**
 
 | Type        | count      | stability | egg file |
 |-------------|------------|-----------|----|
@@ -157,7 +158,7 @@ cluster
 | Agent       | 1          |  bad      | agent.js |
 
 
-ICP
+**ICP**
 
 example code
 
