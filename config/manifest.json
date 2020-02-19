@@ -1,28 +1,28 @@
 {
-  "chunk/0.js": "/public/js/chunk/0.js",
-  "chunk/0.js.map": "/public/js/chunk/0.js.map",
-  "app.js": "/public/js/chunk/app.js",
-  "app.js.map": "/public/js/chunk/app.js.map",
-  "common.css": "/public/css/common.css",
-  "common.js": "/public/js/chunk/common.js",
-  "common.css.map": "/public/css/common.css.map",
-  "common.js.map": "/public/js/chunk/common.js.map",
-  "runtime.js": "/public/js/runtime.js",
-  "runtime.js.map": "/public/js/runtime.js.map",
+  "chunk/0.js": "/static/public/js/chunk/0.4e60493d.js",
+  "chunk/0.js.map": "/static/public/js/chunk/0.4e60493d.js.map",
+  "app.js": "/static/public/js/chunk/app.555669d7.js",
+  "app.js.map": "/static/public/js/chunk/app.555669d7.js.map",
+  "common.css": "/static/public/css/common.7d3c9732.css",
+  "common.js": "/static/public/js/chunk/common.13713811.js",
+  "common.js.map": "/static/public/js/chunk/common.13713811.js.map",
+  "runtime.js": "/static/public/js/runtime.1fe25746.js",
+  "runtime.js.map": "/static/public/js/runtime.1fe25746.js.map",
+  "img/bgHead.jpeg": "/static/public/img/bgHead.6e7118c6.jpeg",
   "deps": {
     "app.js": {
       "js": [
-        "/public/js/runtime.js",
-        "/public/js/chunk/common.js",
-        "/public/js/chunk/app.js"
+        "/static/public/js/runtime.1fe25746.js",
+        "/static/public/js/chunk/common.13713811.js",
+        "/static/public/js/chunk/app.555669d7.js"
       ],
       "css": [
-        "/public/css/common.css"
+        "/static/public/css/common.7d3c9732.css"
       ]
     }
   },
   "info": {
-    "publicPath": "/public/",
+    "publicPath": "/static/public/",
     "buildPath": "public",
     "mapped": true
   }
