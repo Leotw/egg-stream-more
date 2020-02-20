@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 username=root
 ip=39.100.135.194
 localpath=$(pwd)
