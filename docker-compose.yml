@@ -1,0 +1,11 @@
+version: '2'
+services:
+  node-app:
+    container_name: egg-stream-more-builder
+    image: node-base:1.0.1
+    # restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+    - '7001:7001'

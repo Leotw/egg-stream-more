@@ -1,0 +1,12 @@
+.gitignore
+.git
+.DS_Store
+.idea
+.sh
+docker-compose.yml
+Dockerfile
+README.md
+yarn.lock
+package-lock.json
+node_modules/
+coverage/
