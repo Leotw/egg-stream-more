@@ -55,10 +55,78 @@ npm run start:prod # or npm start
 npm run start:stage # start stage environment
 ```
 
+**Docker deploy**
+> Install `Docker` and `docker-compose` firstly.
+
+基本配置存放在 `Dockerfile`和`docker-compose.yml`中。部署基于自建镜像`node-base`，首次部署需要先进行镜像`node-base`的build。
+
+1.config your deploy option
+```bash
+$ [root@localhost] open .do/prop.sh
+```
+```bash
+username=root
+ip=39.100.135.194
+localpath=$(pwd)
+remotepath=/app/
+appname=egg-stream-more
+staticpath=/usr/share/nginx/html/static/
+
+### docker path
+container=egg-stream-more-builder # 容器
+service=node-app # 服务
+workdir=/app/${appname} # Dockerfile WORKDIR
+```
+
+2.authentication login
+
+```bash
+$ [root@localhost] ssh-keygen -t rsa # 生成密钥
+$ [root@localhost] ssh-copy-id [-i indetify_file ][user@host_ip] # 复制密钥到远端主机
+$ [root@localhost] scp ~/.ssh/id_rsa.pub root@remote:~/.ssh/authorized_keys # 复制公钥到authorized_keys
+$ [root@remote] chmod 700 ~/.ssh & chmod 600 ~/.ssh/authorized_keys # 权限
+$ [root@localhost] ssh-add -K ~/.ssh/id_rsa # Mac用户可能需要这一步
+$ [root@remote] netstat -lnt # 查看可用端口
+```
+
+3.build images
+
+```bash
+$ [root@remote] cd app/egg-stream-more
+$ [root@remote] docker build -t node-base:1.0.1 .
+```
+
+4.build
+
+```bash
+$ [root@localhost] npm run deploy:do # trigger .do
+$ [root@remote] bash .do/build.sh
+```
+
+手动处理
+
+进入`docker-compose.yml`所在目录
+
+```bash
+`docker-compose ps` # 查看当前服务状态
+`docker-compose stop` # 停止当前服务
+`docker-compose rm` # 删除当前服务
+`docker-compose start` # 服务没有移除的情况下启动服务
+`docker-compose build` # 依据Dockerfile构建服务，会重新编译项目
+`docker-compose up -d` # build之后启动服务
+```
+
+docker容器处理
+```bash
+`dokcer ps` # list running containers. 
+`docker rm id ` # remove container by  containerID.
+```
+
+
 **Custom deploy**
 > don't use for production all
 
-1. config your deploy option
+1.config your deploy option
 
 ```bash
 $ [root@localhost] open .sh/prop.sh
@@ -72,18 +140,11 @@ appname=my-app # remote app name
 staticpath=/staic/ # remote static remote, can be cdn path
 ```
 
-2. authentication login
+2.authentication login
 
-```bash
-$ [root@localhost] ssh-keygen -t rsa # 生成密钥
-$ [root@localhost] ssh-copy-id [-i indetify_file ][user@host_ip] # 复制密钥到远端主机
-$ [root@localhost] scp ~/.ssh/id_rsa.pub root@remote:~/.ssh/authorized_keys # 复制公钥到authorized_keys
-$ [root@remote] chmod 700 ~/.ssh & chmod 600 ~/.ssh/authorized_keys # 权限
-$ [root@localhost] ssh-add -K ~/.ssh/id_rsa # Mac用户可能需要这一步
-$ [root@remote] netstat -lnt # 查看可用端口
-```
+like `Docker deploy`
 
-3. build
+3.build
 
 ```bash
 $ [root@localhost] npm run deploy # trigger .sh
