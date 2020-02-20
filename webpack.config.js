@@ -8,7 +8,12 @@ module.exports = merge(
     entry: {
       app: './client/app.js'
     },
-    devtool: 'source-map'
+    devtool: 'source-map',
+    plugins: [
+      {
+        imagemini: false
+      }
+    ]
   },
   process.env.NODE_ENV === 'development' ? webpackDevConfig : webpackProdConfig
 );

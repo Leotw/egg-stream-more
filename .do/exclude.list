@@ -1,0 +1,13 @@
+logs
+public
+run
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+coverage
+.idea
+.DS_Store
+typings
+nyc_output
+node_modules
