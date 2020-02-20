@@ -10,5 +10,3 @@ coverage
 .DS_Store
 typings
 nyc_output
-node_modules
-
