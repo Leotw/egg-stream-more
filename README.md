@@ -42,16 +42,17 @@ $ open http://localhost:7001/
 step 1. build static resource(NODE_ENV=production)
 
 ```bash
-npm run build # local build
-npm run build:prod # production build
+npm run build:local # local build
 npm run build:stage # stage build
+npm run build:prod # or npm run build  # production build
 ```
 
 step 2. start services
 
 ```bash
-npm run start:prod # or npm start
+npm run start:local #
 npm run start:stage # start stage environment
+npm run start:prod # or npm start # start production environment
 ```
 
 **Docker deploy**
@@ -60,13 +61,16 @@ npm run start:stage # start stage environment
 
 基本配置存放在 `Dockerfile`和`docker-compose.yml`中。部署基于自建镜像`node-base`，首次部署需要先进行镜像`node-base`的build。
 
-部署流程
+部署流程概览
+
 ```
 root@localhost:上传项目至远端
 root@remote:根据docker-image构建项目以及容器
 root@remote:启动容器
 root@remote:上传容器内的静态资源至oss服务
 ```
+
+部署具体执行
 
 1.config your deploy option
 ```bash
@@ -97,7 +101,7 @@ $ [root@localhost] ssh-add -K ~/.ssh/id_rsa # Mac用户可能需要这一步
 $ [root@remote] netstat -lnt # 查看可用端口
 ```
 
-3.build images
+3.build images(first deploy try or skip)
 
 ```bash
 $ [root@remote] cd app/egg-stream-more
@@ -111,9 +115,9 @@ $ [root@localhost] npm run deploy:do # trigger .do
 $ [root@remote] bash .do/build.sh
 ```
 
-手动处理
+异常情况的手动处理事项
 
-进入`docker-compose.yml`所在目录
+`docker-compose`(需要进入docker-compose.yml所在目录)
 
 ```bash
 docker-compose ps # 查看当前服务状态
@@ -124,7 +128,7 @@ docker-compose build # 依据Dockerfile构建服务，会重新编译项目
 docker-compose up -d # build之后启动服务
 ```
 
-docker处理
+`docker`处理
 
 ```bash
 dokcer ps # list running containers. 
@@ -135,6 +139,17 @@ docker run -d --name ${container-name} -p ${host-port}:${container-port} ${image
 
 
 **Custom deploy**
+
+部署流程概览
+
+```
+root@localhost:上传项目至远端
+root@remote:根据docker-image构建项目以及容器
+root@remote:启动容器
+root@remote:上传容器内的静态资源至oss服务
+```
+
+部署具体执行
 
 1.config your deploy option
 
