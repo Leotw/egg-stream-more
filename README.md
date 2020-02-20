@@ -27,7 +27,6 @@ $ open http://localhost:7001/
 
 ### Deploy
 
-
 **Core command**
 
 | command | EGG_SERVER_ENV | NODE_ENV |
@@ -56,9 +55,18 @@ npm run start:stage # start stage environment
 ```
 
 **Docker deploy**
+
 > Install `Docker` and `docker-compose` firstly.
 
 基本配置存放在 `Dockerfile`和`docker-compose.yml`中。部署基于自建镜像`node-base`，首次部署需要先进行镜像`node-base`的build。
+
+部署流程
+```
+root@localhost:上传项目至远端
+root@remote:根据docker-image构建项目以及容器
+root@remote:启动容器
+root@remote:上传容器内的静态资源至oss服务
+```
 
 1.config your deploy option
 ```bash
@@ -72,7 +80,7 @@ remotepath=/app/
 appname=egg-stream-more
 staticpath=/usr/share/nginx/html/static/
 
-### docker path
+# docker path
 container=egg-stream-more-builder # 容器
 service=node-app # 服务
 workdir=/app/${appname} # Dockerfile WORKDIR
@@ -108,23 +116,25 @@ $ [root@remote] bash .do/build.sh
 进入`docker-compose.yml`所在目录
 
 ```bash
-`docker-compose ps` # 查看当前服务状态
-`docker-compose stop` # 停止当前服务
-`docker-compose rm` # 删除当前服务
-`docker-compose start` # 服务没有移除的情况下启动服务
-`docker-compose build` # 依据Dockerfile构建服务，会重新编译项目
-`docker-compose up -d` # build之后启动服务
+docker-compose ps # 查看当前服务状态
+docker-compose stop # 停止当前服务
+docker-compose rm # 删除当前服务
+docker-compose start # 服务没有移除的情况下启动服务
+docker-compose build # 依据Dockerfile构建服务，会重新编译项目
+docker-compose up -d # build之后启动服务
 ```
 
-docker容器处理
+docker处理
+
 ```bash
-`dokcer ps` # list running containers. 
-`docker rm id ` # remove container by  containerID.
+dokcer ps # list running containers. 
+docker rm id # remove container by containerID.
+docker build -t ${image-name}:${tag} . # build image
+docker run -d --name ${container-name} -p ${host-port}:${container-port} ${image}:${tag} # create container
 ```
 
 
 **Custom deploy**
-> don't use for production all
 
 1.config your deploy option
 
